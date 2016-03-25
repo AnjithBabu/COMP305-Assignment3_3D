@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     // private instance variables
     private static int scoreValue;
     private int livesValue;
+    
 
     // public instance variables
     public Text LivesLabel;
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour
     public Text HighScoreLabel;
     public Text GameOverLabel;
     public Button RestartButton;
+    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fp;
 
     // public access methods
     public int ScoreValue
@@ -36,7 +38,7 @@ public class GameController : MonoBehaviour
 
         set
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 scoreValue = value;
                 this.ScoreLabel.text = "Score: " + scoreValue;
@@ -53,7 +55,7 @@ public class GameController : MonoBehaviour
 
         set
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 this.livesValue = value;
                 if (this.livesValue <= 0)
@@ -85,7 +87,7 @@ public class GameController : MonoBehaviour
     private void _initialize()
     {
         this.ScoreValue = 0;
-        this.LivesValue = 5;
+        this.LivesValue = 1;
         this.GameOverLabel.gameObject.SetActive(false);
         this.HighScoreLabel.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(false);
@@ -100,7 +102,25 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Enemy").gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("Chest").gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("Wand").gameObject.SetActive(false);
+
+        if (GameObject.Find("Player").GetComponent<CharacterController>())
+        {
+            GameObject.Find("Player").GetComponent<CharacterController>().enabled = false;
+        }
+
+        else
+        {
+            Debug.Log("No Motor Attached!");
+        }
     }
 
+    public void RestartButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     
 }

@@ -6,6 +6,8 @@ public class PlayerShooting : MonoBehaviour {
     public Transform spawnPoint;
     public GameObject magicFlash;
     public GameObject impactFlash;
+    public GameObject magicExplosion;
+    
 
     public GameController gameController;
 
@@ -32,8 +34,16 @@ public class PlayerShooting : MonoBehaviour {
 
             if (Physics.Raycast(this._transform.position, this._transform.forward, out hit, 60f))
             {
+                if (hit.transform.gameObject.CompareTag("Chest"))
+                {
+                    Instantiate(this.magicExplosion, hit.point, Quaternion.identity);
+                    Destroy(hit.transform.gameObject);
+                    this.gameController.ScoreValue += 100;
+                }
                 Instantiate(this.impactFlash, hit.point, Quaternion.identity);
             }
         }
     }
+
+    
 }
