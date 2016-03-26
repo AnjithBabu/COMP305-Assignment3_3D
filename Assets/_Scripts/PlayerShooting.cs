@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+ * Sourcefile name : Player Shooting
+ * Author’s name: Anjith Babu
+ * Last	Modifiedby: Anjith Babu
+ * Date	lastModified : March 25, 2016	
+ * Program	description: 
+ * Used to control the player wand firing and hitting of the object
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class PlayerShooting : MonoBehaviour {
@@ -13,10 +22,12 @@ public class PlayerShooting : MonoBehaviour {
 
     // private varriables
     private Transform _transform;
+    
 
 	// Use this for initialization
 	void Start () {
 	   this._transform = gameObject.GetComponent<Transform>();
+       
 	}
 	
 	// Update is called once per frame
@@ -36,6 +47,7 @@ public class PlayerShooting : MonoBehaviour {
             {
                 if (hit.transform.gameObject.CompareTag("Chest"))
                 {
+                    // start the explosion, destroy the object and increase score by 100
                     Instantiate(this.magicExplosion, hit.point, Quaternion.identity);
                     Destroy(hit.transform.gameObject);
                     this.gameController.ScoreValue += 100;

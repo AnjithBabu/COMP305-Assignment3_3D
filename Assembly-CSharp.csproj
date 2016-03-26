@@ -50,6 +50,7 @@
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\PlayerFollow.cs" />
      <Compile Include="Assets\_Scripts\PlayerShooting.cs" />
+     <Compile Include="Assets\_Scripts\PositionEnemy.cs" />
      <Compile Include="Assets\_Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
      <Compile Include="Assets\_Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
      <Compile Include="Assets\_Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />

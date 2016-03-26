@@ -1,30 +1,27 @@
 ﻿/*
- * Sourcefile name : FireController
+ * Sourcefile name : PositionEnemy
  * Author’s name: Anjith Babu
  * Last	Modifiedby: Anjith Babu
  * Date	lastModified : March 25, 2016	
  * Program	description: 
- * Self distructive script for the chest, fireobjects and explosions.
+ * It is used to bring back the enemy if it falls of the plane.
  */
 
 using UnityEngine;
 using System.Collections;
 
-public class FireController : MonoBehaviour {
-
-    public float lifeTime;
-    private float dieTIme;
+public class PositionEnemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        dieTIme = Time.time + lifeTime; 
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time >= dieTIme)
+        if (this.gameObject.transform.position.y < 0.5)
         {
-            Destroy(gameObject);
+            this.gameObject.transform.position = new Vector3(4.57f, 1.12f, -2.46f);
         }
 	}
 }
